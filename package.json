@@ -1,0 +1,20 @@
+{
+  "name": "ai-streaming-dashboard",
+  "version": "1.0.0",
+  "description": "Streaming AI chat with live metrics dashboard — React, Vite, Zustand, Claude",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zustand": "^4.5.5"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0",
+    "@vitejs/plugin-react": "^4.3.1"
+  }
+}
