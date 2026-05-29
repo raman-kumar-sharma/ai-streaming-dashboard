@@ -9,7 +9,7 @@ export function LatencyBar({ calls }) {
     <div>
       {calls.slice(0,10).map((c,i) => (
         <div key={c.id} style={{ display:'flex', alignItems:'center', gap:10, marginBottom:6 }}>
-          <div style={{ width:120, fontSize:11, color:'#555', overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap' }}>
+          <div className="latency-label" style={{ width:120, fontSize:11, color:'#555', overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap' }}>
             {c.prompt}
           </div>
           <div style={{ flex:1, height:18, background:'#1a1a1e', borderRadius:4, overflow:'hidden' }}>
@@ -20,7 +20,7 @@ export function LatencyBar({ calls }) {
               transition:'width 0.3s', minWidth:2,
             }} />
           </div>
-          <div style={{ width:60, fontSize:11, color:'#666', textAlign:'right' }}>
+          <div className="latency-ms" style={{ width:60, fontSize:11, color:'#666', textAlign:'right' }}>
             {c.latencyMs ? `${c.latencyMs}ms` : c.status}
           </div>
         </div>

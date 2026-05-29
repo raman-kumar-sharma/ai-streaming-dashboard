@@ -22,7 +22,7 @@ export function ErrorUI({ error, onRetry, onDismiss }) {
   if (!error) return null
   const kind = classify(error)
   return (
-    <div style={{ background:'#1a0a0a', border:'1px solid #7f1d1d', borderRadius:10,
+    <div className="error-ui" style={{ background:'#1a0a0a', border:'1px solid #7f1d1d', borderRadius:10,
       padding:'14px 16px', display:'flex', gap:12, alignItems:'flex-start' }}>
       <span style={{ fontSize:20 }}>{icons[kind]}</span>
       <div style={{ flex:1 }}>
@@ -32,7 +32,7 @@ export function ErrorUI({ error, onRetry, onDismiss }) {
         <div style={{ fontSize:13, color:'#888' }}>{error.message}</div>
         {error.status && <div style={{ fontSize:12, color:'#555', marginTop:4 }}>Status: {error.status}</div>}
       </div>
-      <div style={{ display:'flex', gap:8 }}>
+      <div className="error-ui-actions" style={{ display:'flex', gap:8 }}>
         {onRetry && <button type="button" onClick={onRetry} style={btn('#2563eb')}>Retry</button>}
         {onDismiss && <button type="button" onClick={onDismiss} style={btn('#333')}>Dismiss</button>}
       </div>
