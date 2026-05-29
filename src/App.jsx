@@ -29,8 +29,8 @@ export default function App() {
   }, [])
 
   return (
-    <div style={{ display:'flex', flexDirection:'column', height:'100vh' }}>
-      <header style={{ borderBottom:'1px solid #1e1e22', padding:'0 20px',
+    <div className="app-root" style={{ display:'flex', flexDirection:'column', height:'100vh' }}>
+      <header className="app-header" style={{ borderBottom:'1px solid #1e1e22', padding:'0 20px',
         display:'flex', alignItems:'center', flexShrink:0 }}>
         <span style={{ fontWeight:700, fontSize:15, marginRight:24, color:'#e5e5e5' }}>StreamDesk</span>
         {TABS.map(t => (
@@ -65,15 +65,15 @@ function ChatTab() {
   useEffect(() => { bottomRef.current?.scrollIntoView({ behavior:'smooth' }) }, [msgs])
 
   return (
-    <div style={{ display:'flex', height:'100%' }}>
+    <div className="chat-layout" style={{ display:'flex', height:'100%' }}>
       <SessionSidebar />
-      <div style={{ flex:1, display:'flex', flexDirection:'column', overflow:'hidden' }}>
-        <div style={{ padding:'12px 16px', borderBottom:'1px solid #1e1e22', display:'flex', justifyContent:'space-between' }}>
+      <div className="chat-main" style={{ flex:1, display:'flex', flexDirection:'column', overflow:'hidden' }}>
+        <div className="chat-toolbar" style={{ padding:'12px 16px', borderBottom:'1px solid #1e1e22', display:'flex', justifyContent:'space-between' }}>
           <span style={{ fontWeight:600, fontSize:14 }}>Streaming Chat</span>
           <button type="button" onClick={() => clear()} style={ghostBtn}>Clear</button>
         </div>
 
-        <div style={{ flex:1, overflowY:'auto', padding:'16px' }}>
+        <div className="chat-messages" style={{ flex:1, overflowY:'auto', padding:'16px' }}>
           {msgs.length === 0 && (
             <div style={{ textAlign:'center', color:'#444', fontSize:14, marginTop:60 }}>Start a conversation</div>
           )}
@@ -100,7 +100,7 @@ function ChatTab() {
           <div ref={bottomRef} />
         </div>
 
-        <div style={{ padding:'12px 16px', borderTop:'1px solid #1e1e22' }}>
+        <div className="chat-input-area" style={{ padding:'12px 16px', borderTop:'1px solid #1e1e22' }}>
           {retryInfo && <RetryBanner info={retryInfo} />}
           {error && (
             <div style={{ marginBottom:12 }}>
@@ -130,13 +130,13 @@ function DashTab() {
   }
 
   return (
-    <div style={{ maxWidth:900, margin:'0 auto', padding:'24px 20px', overflowY:'auto', height:'100%' }}>
+    <div className="dash-tab" style={{ maxWidth:900, margin:'0 auto', padding:'24px 20px', overflowY:'auto', height:'100%' }}>
       <div style={{ marginBottom:20 }}>
         <h2 style={{ fontSize:18, fontWeight:600, marginBottom:4 }}>AI Dashboard</h2>
         <p style={{ color:'#555', fontSize:13 }}>Token usage · Latency · Call log</p>
       </div>
 
-      <div style={{ display:'flex', gap:8, marginBottom:12 }}>
+      <div className="dash-prompt-row" style={{ display:'flex', gap:8, marginBottom:12 }}>
         <input value={input} onChange={e => setInput(e.target.value)}
           onKeyDown={e => e.key === 'Enter' && submit()}
           placeholder="Custom prompt…"
@@ -167,14 +167,14 @@ function DashTab() {
         </div>
       )}
 
-      <div style={{ display:'grid', gridTemplateColumns:'repeat(4, 1fr)', gap:10, marginBottom:20 }}>
+      <div className="dash-metrics" style={{ display:'grid', gridTemplateColumns:'repeat(4, 1fr)', gap:10, marginBottom:20 }}>
         <MetricCard label="Total calls" value={stats.total} accent />
         <MetricCard label="Success" value={stats.success} />
         <MetricCard label="Avg latency" value={stats.avgLatency} unit="ms" />
         <MetricCard label="Total tokens" value={stats.totalTokens} />
       </div>
 
-      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:16 }}>
+      <div className="dash-panels" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:16 }}>
         <Panel title="Latency (last 10)"><LatencyBar calls={calls} /></Panel>
         <Panel title="Call log"><CallLog calls={calls} /></Panel>
       </div>

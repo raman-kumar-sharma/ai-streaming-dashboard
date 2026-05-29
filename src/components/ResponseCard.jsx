@@ -18,7 +18,7 @@ export function ResponseCard({ state = 'idle', content = '', model, tokens, late
       </div>
 
       {(model || tokens || latencyMs) && (
-        <div style={{ borderTop:'1px solid #1e1e22', padding:'6px 16px', display:'flex', gap:16,
+        <div className="response-meta" style={{ borderTop:'1px solid #1e1e22', padding:'6px 16px', display:'flex', gap:16,
           fontSize:11, color:'#555' }}>
           {model    && <span>model: {model}</span>}
           {tokens   && <span>tokens: {tokens}</span>}

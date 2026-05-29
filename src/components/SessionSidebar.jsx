@@ -10,7 +10,7 @@ export function SessionSidebar() {
   const ids = Object.keys(sessions)
 
   return (
-    <div style={{ width:200, borderRight:'1px solid #1e1e22', padding:'16px 12px', flexShrink:0 }}>
+    <div className="session-sidebar" style={{ width:200, borderRight:'1px solid #1e1e22', padding:'16px 12px', flexShrink:0 }}>
       <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:12 }}>
         <span style={{ fontSize:12, color:'#555', fontWeight:600, textTransform:'uppercase', letterSpacing:'0.06em' }}>Sessions</span>
         <button type="button" onClick={() => createSession()} style={iconBtn} title="New session">+</button>
@@ -18,6 +18,7 @@ export function SessionSidebar() {
       {ids.length === 0 && (
         <div style={{ fontSize:12, color:'#444' }}>No sessions yet</div>
       )}
+      <div className="session-list">
       {ids.map(id => {
         const msgs = sessions[id].messages
         const label = msgs.find(m => m.role === 'user')?.content?.slice(0, 22) || 'New chat'
@@ -32,6 +33,7 @@ export function SessionSidebar() {
           </button>
         )
       })}
+      </div>
     </div>
   )
 }

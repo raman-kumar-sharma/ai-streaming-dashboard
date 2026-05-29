@@ -1,2 +1,35 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,sans-serif;background:#0f0f10;color:#e5e5e5;min-height:100vh}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0f0f10;color:#e5e5e5;min-height:100vh;overflow-x:hidden}
+.app-root{height:100vh;height:100dvh}
+.app-header{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.chat-layout{min-width:0}
+.chat-main{min-width:0}
+.chat-toolbar{flex-wrap:wrap;gap:8px}
+.chat-messages{padding:12px!important}
+.chat-input-area{padding:10px 12px!important}
+.dash-tab{padding:16px 12px!important}
+.dash-prompt-row{flex-wrap:wrap}
+.dash-prompt-row input{min-width:0}
+.dash-prompt-row button{flex-shrink:0}
+@media(max-width:768px){
+  .app-header{padding:0 12px!important}
+  .app-header>span{margin-right:12px!important;font-size:14px!important}
+  .app-header button{padding:12px 10px!important;font-size:13px!important}
+  .dash-metrics{grid-template-columns:repeat(2,1fr)!important}
+  .dash-panels{grid-template-columns:1fr!important}
+  .latency-label{width:72px!important;font-size:10px!important}
+  .latency-ms{width:48px!important;font-size:10px!important}
+  .response-meta{flex-wrap:wrap!important;gap:8px 12px!important}
+  .error-ui{flex-direction:column!important}
+  .error-ui-actions{align-self:flex-end}
+}
+@media(max-width:640px){
+  .chat-layout{flex-direction:column!important}
+  .session-sidebar{width:100%!important;max-height:132px;overflow-y:auto;border-right:none!important;border-bottom:1px solid #1e1e22;padding:10px 12px!important}
+  .session-list{display:flex!important;flex-direction:row!important;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+  .session-list button{width:auto!important;min-width:112px;flex-shrink:0;margin-bottom:0!important}
+  .dash-metrics{grid-template-columns:1fr 1fr!important;gap:8px!important}
+}
+@media(max-width:400px){
+  .dash-metrics{grid-template-columns:1fr!important}
+}
